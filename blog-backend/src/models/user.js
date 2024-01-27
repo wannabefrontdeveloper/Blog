@@ -32,7 +32,7 @@ UserSchema.methods.generateToken = function () {
     // 첫 번째 파라미터에는 토큰 안에 집어넣고 싶은 데이터를 넣습니다.
     {
       _id: this.id,
-      usename: this.username,
+      username: this.username, // 오타 수정
     },
     process.env.JWT_SECRET, // 두 번째 파라미터에는 JWT 암호를 넣습니다.
     {
