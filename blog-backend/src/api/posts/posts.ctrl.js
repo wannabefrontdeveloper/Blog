@@ -66,7 +66,6 @@ export const list = async (ctx) => {
         body:
           post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
       }));
-    ctx.body = posts;
   } catch (e) {
     ctx.throw(500, e);
   }
