@@ -4,7 +4,7 @@ import { produce } from 'immer'; // immer에서 직접 produce를 import
 const CHANGE_FIELD = 'auth/CHANGED_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
-export const sampleAction = createAction(
+export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
     form,
