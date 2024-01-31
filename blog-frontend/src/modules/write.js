@@ -19,7 +19,7 @@ export const changeField = createAction(CHANGE_FIELD, ({key, value}) => ({
   value,
 }));
 
-export const writePOst = createAction(WRITE_POST, ({title, body, tags}) => ({
+export const writePost = createAction(WRITE_POST, ({title, body, tags}) => ({
   title,
   body,
   tags,
