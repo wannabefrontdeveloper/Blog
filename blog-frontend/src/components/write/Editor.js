@@ -44,7 +44,7 @@ const Editor = () => {
         // 더 많은 옵션
         // https://quilljs.com/docs/modules/toobar/ 참고
         toolbar: [
-          [{ haeder: '1'}, {header: '2'}],
+          [{ header: '1'}, {header: '2'}],
           ['bold', 'italic', 'underline', 'strike'],
           [{list: 'ordered'}, {list: 'bullet'}],
           ['blockquote', 'code-block', 'link', 'image'],
