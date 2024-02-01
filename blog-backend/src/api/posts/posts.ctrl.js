@@ -51,26 +51,27 @@ export const getPostById = async (ctx, next) => {
 
 export const write = async (ctx) => {
   const schema = Joi.object().keys({
-    title: Joi.string().required(), // required()가 있으면 필수 항목
-    body: sanitizeHtml(body, sanitizeOption),
-    tags: Joi.array().items(Joi.string()).required(), // 문자열로 이루어진 배열
+    title: Joi.string().required(),
+    body: Joi.string().required(),  // 이 부분은 필수로 값을 가져와야 함
+    tags: Joi.array().items(Joi.string()).required(),
   });
 
-  // 검증하고 나서 검증 실패인 경우 에러 처리
   const result = schema.validate(ctx.request.body);
   if (result.error) {
-    ctx.status = 400; // Bad Request
+    ctx.status = 400;
     ctx.body = result.error;
     return;
   }
 
   const { title, body, tags } = ctx.request.body;
+  const sanitizedBody = sanitizeHtml(body, sanitizeOption);  // body 변수를 선언하고 값을 할당
   const post = new Post({
     title,
-    body,
+    body: sanitizedBody,
     tags,
     user: ctx.state.user,
   });
+
   try {
     await post.save();
     ctx.body = post;
