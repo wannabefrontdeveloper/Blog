@@ -18,7 +18,7 @@ const WritePostButtonWrapper = styled.div `
 
 const PostItemBlock = styled.div`
   padding-top: 3rem;
-  padding-bottom: erem;
+  padding-bottom: 3rem;
   /* 맨 위 포스트는 padding-top 없음 */
   &:first-child{
     padding-top:0;
