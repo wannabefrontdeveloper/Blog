@@ -5,6 +5,30 @@ import sanitizeHtml from 'sanitize-html';
 
 const { ObjectId } = mongoose.Types;
 
+const sanitizeOption = {
+  allowedTags: [
+    'h1',
+    'h2',
+    'b',
+    'i',
+    'u',
+    's',
+    'p',
+    'ul',
+    'ol',
+    'li',
+    'blockquote',
+    'a',
+    'img',
+  ],
+  allowedAttributes: {
+    a: ['href', 'name', 'target'],
+    img: ['src'],
+    li: ['class'],
+  },
+  allowedSchemes: ['data','http'],
+}
+
 export const getPostById = async (ctx, next) => {
   const { id } = ctx.params;
   if (!ObjectId.isValid(id)) {
