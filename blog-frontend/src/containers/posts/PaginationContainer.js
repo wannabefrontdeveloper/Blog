@@ -1,6 +1,6 @@
 import React from 'react';
 import Pagination from '../../components/posts/Pagination';
-import { UseSelector, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {useParams, useSearchParams} from 'react-router-dom';
 
 const PaginationContainer = () => {
