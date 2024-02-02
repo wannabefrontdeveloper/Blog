@@ -4,7 +4,7 @@ import {readPost, unloadPost} from '../../modules/post';
 import PostViewer from '../../components/post/postViewer';
 import PostActionButtons from '../../components/post/PostActionButtons';
 import { setOriginalPost } from '../../modules/write';
-import {removePost} from '../../lib/api/posts';
+import { removePost } from '../../lib/api/posts';
 import { useParams,useNavigate } from 'react-router-dom';
 
 const PostViewerContainer = () => {
@@ -32,6 +32,15 @@ const PostViewerContainer = () => {
   navigate('/write');
   }
 
+const onRemove = async () => {
+  try {
+    await removePost(postId);
+    navigate('/'); // 홈으로 이동
+  } catch (e) {
+    console.log(e);
+  }
+}
+
   const ownPost = (user && user._id) === (post && post.user._id);
 
   return <PostViewer 
@@ -39,7 +48,7 @@ const PostViewerContainer = () => {
   loading={loading} 
   error={error} 
   actionButtons={
-    ownPost && <PostActionButtons onEdit={onEdit}/>
+    ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove}/>
 }
 />;
 }
