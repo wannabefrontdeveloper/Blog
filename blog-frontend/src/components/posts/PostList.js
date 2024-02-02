@@ -40,22 +40,30 @@ const PostItemBlock = styled.div`
   }
 `;
 
-const PostItem = ({post}) => {
-  const {publishedDate, user, tags, title, body, _id} = post;
+const PostItem = ({ post }) => {
+  
+
+  const { publishedDate, _doc, tags, title, body, _id } = post;
+  const user = _doc.user; // user를 _doc에서 가져오기
+
+  
+
   return (
     <PostItemBlock>
       <h2>
-        <Link to={`/@${user.username}/${_id}`}>{title}</Link>
+        <Link to={user && user.username ? `/@${user.username}/${_id}` : '#'}>{title}</Link>
       </h2>
       <SubInfo 
-      username={user.username}
-       publishedDate={new Date(publishedDate)}
-       />
+        username={user && user.username}
+        publishedDate={new Date(publishedDate)}
+      />
       <Tags tags={tags} />
       <p>{body}</p>
     </PostItemBlock>
-  )
-}
+  );
+};
+
+
 
 const PostList = ({posts,loading,error,showWriteButton}) => {
   // 에러 발생시
