@@ -3,6 +3,9 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
+import serve from 'koa-static';
+import path from 'path';
+import send from 'koa-send';
 
 import api from './api';
 import jwtMiddleware from './lib/jwtMiddleware';
@@ -27,6 +30,8 @@ app.use(bodyParser());
 app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods());
+
+const buildDirectory = path.resolve(__)
 
 const port = PORT || 4000;
 app.listen(port, () => {
