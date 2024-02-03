@@ -6,7 +6,8 @@ import { useParams, useSearchParams } from 'react-router-dom';
 
 const PostListContainer = () => {
   const params = useParams();
-  const username = params?.username?.split('@')[1]; // username이 정의되어 있을 때만 split 메서드 호출
+  
+  const username = (params.username||'').split('@')[1];
   
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();

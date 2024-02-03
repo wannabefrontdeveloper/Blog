@@ -7,7 +7,7 @@ const PaginationContainer = () => {
   const [searchParams] = useSearchParams();
 
   const params = useParams();
-  const username = params?.username?.split('@')[1]; // username이 정의되어 있을 때만 split 메서드 호출
+  const username = (params.username||'').split('@')[1];
   
   const tag = searchParams.get('tag');
   // page가 없으면 1을 기본값으로 사용
