@@ -41,17 +41,21 @@ const PostItemBlock = styled.div`
 `;
 
 const PostItem = ({ post }) => {
-  
+  const { _doc } = post;
+  const { publishedDate, tags, title, body, _id, user } = _doc;
 
-  const { publishedDate, _doc, tags, title, body, _id } = post;
-  const user = _doc.user; // user를 _doc에서 가져오기
-
-  
+  console.log('publishedDate:', publishedDate); // 확인
+  console.log('tags:', tags); // 확인
+  console.log('title:', title); // 확인
+  console.log('body:', body);
+  console.log('_id:', _id);
 
   return (
     <PostItemBlock>
       <h2>
-        <Link to={user && user.username ? `/@${user.username}/${_id}` : '#'}>{title}</Link>
+        <Link to={user && user.username ? `/@${user.username}/${_id}` : '#'}>
+          {title}
+        </Link>
       </h2>
       <SubInfo 
         username={user && user.username}
