@@ -16,7 +16,6 @@ const TagsBlock = styled.div`
 `;
 
 const Tags = ({ tags }) => {
-  console.log("Tags - tags:", tags);
 
   return (
     <TagsBlock>
