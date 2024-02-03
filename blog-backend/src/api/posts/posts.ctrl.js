@@ -83,10 +83,10 @@ export const write = async (ctx) => {
 // html을 없애고 내용이 너무 길면 200자로 제한하는 함수
 const removeHtmlAndShorten = body => {
   const filtered = sanitizeHtml(body, {
-    allowedTags:[],
-  })
-  return filtered.length < 200 ? filtered: `${filtered.slice(0,200)}...`;
-}
+    allowedTags: [],
+  });
+  return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
+};
 export const list = async (ctx) => {
   // query는 문자열이기 때문에 숫자로 변환해 주어야 합니다.
   // 값이 주어지지 않았다면 1을 기본으로 사용합니다.

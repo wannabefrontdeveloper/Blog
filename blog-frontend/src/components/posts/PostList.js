@@ -44,12 +44,6 @@ const PostItem = ({ post }) => {
   const { _doc } = post;
   const { publishedDate, tags, title, body, _id, user } = _doc;
 
-  console.log('publishedDate:', publishedDate); // 확인
-  console.log('tags:', tags); // 확인
-  console.log('title:', title); // 확인
-  console.log('body:', body);
-  console.log('_id:', _id);
-
   return (
     <PostItemBlock>
       <h2>
@@ -62,7 +56,7 @@ const PostItem = ({ post }) => {
         publishedDate={new Date(publishedDate)}
       />
       <Tags tags={tags} />
-      <p>{body}</p>
+      <p dangerouslySetInnerHTML={{ __html: body }} />  {/* 이 부분 수정 */}
     </PostItemBlock>
   );
 };
